@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pre-Dental Compass | College to Dental School</title>
+<style>
+  :root{
+    --navy:#0d3557;
+    --navy2:#164d73;
+    --teal:#1f8f91;
+    --teal2:#dff4f2;
+    --sky:#eef7fb;
+    --ink:#173042;
+    --muted:#667985;
+    --line:#dce8ee;
+    --white:#ffffff;
+    --cream:#fbfcfa;
+    --good:#277a5b;
+    --warn:#9a6d1f;
+    --danger:#a14a4a;
+    --shadow:0 10px 28px rgba(22,58,78,.08);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color:var(--ink);
+    background:linear-gradient(180deg,#f9fcfd 0%,#f6fafb 100%);
+    line-height:1.55;
+  }
+  a{color:var(--navy2)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+  header{
+    position:sticky;top:0;z-index:20;
+    backdrop-filter:blur(12px);
+    background:rgba(255,255,255,.91);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar{display:flex;align-items:center;justify-content:space-between;min-height:70px;gap:18px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+  .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--navy),var(--teal));display:grid;place-items:center;color:white;font-size:20px;box-shadow:var(--shadow)}
+  nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+  nav a{font-size:13px;text-decoration:none;padding:8px 10px;border-radius:9px;color:#315165}
+  nav a:hover{background:var(--sky)}
+  .hero{padding:76px 0 52px;position:relative;overflow:hidden}
+  .hero:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-130px;top:-120px;background:radial-gradient(circle,rgba(31,143,145,.18),rgba(31,143,145,0));z-index:-1}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+  h1{font-size:clamp(40px,6vw,72px);line-height:1.03;margin:14px 0 18px;color:var(--navy);letter-spacing:-.045em;max-width:850px}
+  .lead{font-size:19px;color:#486676;max-width:770px;margin:0 0 28px}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:12px 17px;font-weight:800;cursor:pointer;text-decoration:none;font-size:14px}
+  .btn.primary{background:var(--navy);color:white}
+  .btn.secondary{background:white;color:var(--navy);border:1px solid var(--line)}
+  .quickgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px}
+  .quick{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+  .quick b{display:block;color:var(--navy);font-size:19px}
+  .quick span{font-size:13px;color:var(--muted)}
+  section{padding:58px 0}
+  .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:24px}
+  .section-head h2{font-size:34px;letter-spacing:-.035em;color:var(--navy);margin:0}
+  .section-head p{max-width:610px;color:var(--muted);margin:0}
+  .card{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+  .soft{background:linear-gradient(180deg,#fff,#fbfefe)}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tabs{display:flex;gap:8px;background:#eaf3f6;padding:6px;border-radius:14px;width:max-content;max-width:100%;overflow:auto;margin-bottom:20px}
+  .tab{border:0;background:transparent;padding:10px 14px;border-radius:10px;font-weight:800;color:#4f6977;cursor:pointer;white-space:nowrap}
+  .tab.active{background:white;color:var(--navy);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .tabpane{display:none}.tabpane.active{display:block}
+  .timeline{position:relative;padding-left:24px}
+  .timeline:before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .step{position:relative;padding:0 0 24px 20px}
+  .step:before{content:"";position:absolute;left:-21px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:3px solid #e8f7f5}
+  .step h4{margin:0 0 5px;color:var(--navy)}
+  .step p{margin:0;color:var(--muted);font-size:14px}
+  .pill{display:inline-block;background:var(--teal2);color:#176b6d;border-radius:999px;padding:5px 9px;font-weight:800;font-size:11px;margin:2px 4px 2px 0}
+  .pill.blue{background:#e7f0f7;color:var(--navy2)}
+  .pill.gold{background:#fff3d8;color:#7c5b17}
+  .checklist{display:grid;gap:8px}
+  .check{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#fff}
+  .check input{margin-top:4px;accent-color:var(--teal)}
+  .check small{display:block;color:var(--muted)}
+  .callout{border-left:4px solid var(--teal);background:#eff9f8;border-radius:10px;padding:14px 16px;color:#315f62}
+  .warning{border-left-color:#c9943d;background:#fff7e9;color:#74551e}
+  .school-controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  select,input[type="number"],input[type="text"]{padding:11px 12px;border:1px solid #cfdde4;border-radius:10px;background:#fff;color:var(--ink);font:inherit}
+  .school-card h3,.prep-card h3{margin:0 0 7px;color:var(--navy)}
+  .meta{font-size:13px;color:var(--muted);margin-bottom:11px}
+  .school-card ul,.prep-card ul{padding-left:19px;margin-bottom:0}
+  .proscons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .pros,.cons{padding:13px;border-radius:12px;font-size:13px}
+  .pros{background:#edf8f2}.cons{background:#fff5ef}
+  .pros b{color:var(--good)}.cons b{color:#995133}
+  .metric{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid #edf2f4}
+  .metric:last-child{border-bottom:0}
+  .metric span{color:var(--muted)}
+  .nova{background:linear-gradient(135deg,#0d3557 0%,#164d73 62%,#1f8f91 130%);color:white;border:0}
+  .nova h2,.nova h3,.nova h4{color:white}
+  .nova p,.nova li{color:#e7f3f8}
+  .nova .stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:15px}
+  .nova .stat b{display:block;font-size:25px}
+  .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  label{font-size:12px;font-weight:800;color:#55707e;display:block;margin-bottom:5px}
+  .field input{width:100%}
+  .scorebox{margin-top:16px;display:none}
+  .scorebox.show{display:block}
+  .meter{height:10px;border-radius:99px;background:#e7eef2;overflow:hidden;margin:10px 0}
+  .meter > div{height:100%;background:linear-gradient(90deg,var(--teal),var(--navy));width:0;transition:.3s}
+  .small{font-size:12px;color:var(--muted)}
+  .monthgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .month{border:1px solid var(--line);border-radius:14px;padding:15px;background:white}
+  .month b{color:var(--navy)}
+  .month p{font-size:13px;color:var(--muted);margin:7px 0 0}
+  details{border:1px solid var(--line);border-radius:13px;background:white;padding:13px 15px}
+  details+details{margin-top:10px}
+  summary{font-weight:800;color:var(--navy);cursor:pointer}
+  .sources{font-size:12px;color:#60727c}
+  .sources li{margin-bottom:8px}
+  footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:13px}
+  .tagline{font-family:Georgia,serif;font-style:italic;color:var(--teal);font-size:18px}
+  @media(max-width:900px){
+    nav{display:none}
+    .quickgrid,.grid3,.monthgrid{grid-template-columns:repeat(2,1fr)}
+    .form-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:620px){
+    .quickgrid,.grid2,.grid3,.monthgrid,.form-grid,.proscons{grid-template-columns:1fr}
+    .hero{padding-top:48px}
+    .section-head{display:block}
+    .section-head p{margin-top:8px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap topbar">
+    <div class="brand"><div class="logo">✦</div><span>Pre-Dental Compass</span></div>
+    <nav>
+      <a href="#roadmap">Roadmap</a><a href="#courses">Courses</a><a href="#dat">DAT</a>
+      <a href="#schools">Schools</a><a href="#nova">NSU Pathway</a><a href="#stats">My Stats</a>
+      <a href="#apply">Apply</a><a href="#interviews">Interviews</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">PRE-DENTAL ROADMAP • DAT • AADSAS • DENTAL SCHOOL</div>
+    <h1>Your road to dental school, without the guesswork.</h1>
+    <p class="lead">A practical guide for every kind of pre-dental student — traditional, transfer, career-changer, gap-year, high-GPA, rebuilding-GPA, or simply figuring it out as you go.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#roadmap">Build my roadmap</a>
+      <a class="btn secondary" href="#stats">Check my profile</a>
+    </div>
+    <div class="quickgrid">
+      <div class="quick"><b>2 paths</b><span>No-gap and gap-year plans</span></div>
+      <div class="quick"><b>7+ years</b><span>Mapped from freshman year onward</span></div>
+      <div class="quick"><b>Florida first</b><span>UF, NSU and LECOM included</span></div>
+      <div class="quick"><b>2026-ready</b><span>Updated for the current DAT scale</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+<div class="wrap">
+  <div class="section-head">
+    <div><div class="eyebrow">Start here</div><h2>Choose your path</h2></div>
+    <p>There is no “correct” timeline. A gap year can add time for DAT prep, GPA repair, research, work, service or simply a stronger application.</p>
+  </div>
+  <div class="tabs">
+    <button class="tab active" data-tab="nogap">No gap year</button>
+    <button class="tab" data-tab="gap">Gap year</button>
+  </div>
+
+  <div id="nogap" class="tabpane active card soft">
+    <div class="grid2">
+      <div class="timeline">
+        <div class="step"><h4>Freshman year</h4><p>Build study habits. Start Biology + General Chemistry, meet pre-health advising, join one meaningful activity, and explore dentistry.</p></div>
+        <div class="step"><h4>Sophomore year</h4><p>Organic Chemistry, Physics where appropriate, steady volunteering, begin consistent shadowing, and identify professors for future letters.</p></div>
+        <div class="step"><h4>Junior fall</h4><p>Biochemistry / upper-level sciences, continue experiences, begin serious DAT prep planning, draft a school list.</p></div>
+        <div class="step"><h4>Junior spring → early summer</h4><p>Take the DAT when ready. Request letters, draft personal statement, enter activities, and prepare AADSAS materials.</p></div>
+        <div class="step"><h4>Summer after junior year</h4><p>Submit ADEA AADSAS early in the cycle when your application is genuinely ready. Complete supplemental applications quickly and carefully.</p></div>
+        <div class="step"><h4>Senior year</h4><p>Interviews, updates, finish prerequisites, compare offers and complete your degree.</p></div>
+      </div>
+      <div>
+        <h3>Best for students who…</h3>
+        <p><span class="pill">Have prerequisites on track</span><span class="pill">Can prep for DAT without rushing</span><span class="pill">Have sustained experiences</span></p>
+        <div class="callout"><b>Do not force this timeline.</b> Applying one cycle later is often better than applying before your academics, DAT, letters or experiences are ready.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gap" class="tabpane card soft">
+    <div class="grid2">
+      <div class="timeline">
+        <div class="step"><h4>Freshman–Junior years</h4><p>Build the academic foundation and explore dentistry without squeezing every requirement into one summer.</p></div>
+        <div class="step"><h4>Senior year</h4><p>Finish your degree and prerequisites. Decide whether your gap year is for DAT prep, employment, research, a post-bacc/master’s, or experience growth.</p></div>
+        <div class="step"><h4>Gap year — early</h4><p>Take or retake the DAT if needed. Strengthen weak areas with intentional work — not random activity collecting.</p></div>
+        <div class="step"><h4>Gap year — application summer</h4><p>Apply through ADEA AADSAS, continue your meaningful experiences, and prepare for interviews.</p></div>
+        <div class="step"><h4>Gap year — fall/winter</h4><p>Interview while continuing the work you listed in your application. Send updates only when schools allow and the update is meaningful.</p></div>
+      </div>
+      <div>
+        <h3>Gap-year ideas</h3>
+        <p><span class="pill">Dental assistant</span><span class="pill">Research</span><span class="pill">Service</span><span class="pill">Post-bacc</span><span class="pill">Master’s/SMP</span><span class="pill">Full-time work</span></p>
+        <div class="callout"><b>A gap year is not a red flag.</b> What matters is that you can explain how the time strengthened your preparation and maturity.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="courses">
+<div class="wrap">
+  <div class="section-head">
+    <div><div class="eyebrow">Academics</div><h2>Courses to plan for</h2></div>
+    <p>Every dental school sets its own prerequisites. This checklist covers the common core plus courses that often make dental school easier or strengthen preparation.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Common prerequisite core</h3>
+      <div class="checklist">
+        <label class="check"><input type="checkbox"><span><b>Biology I & II + labs</b><small>Commonly 8 semester hours total.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>General Chemistry I & II + labs</b><small>Foundation for Organic Chemistry and the DAT.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>Organic Chemistry I & II + labs</b><small>Many schools still expect a full sequence.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>Physics I & II + labs</b><small>Requirements vary, but a full sequence is common.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>Biochemistry</b><small>Required by many schools and useful before the DAT.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>English / writing</b><small>Frequently 6 semester hours.</small></span></label>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Strongly useful / school-specific</h3>
+      <div class="checklist">
+        <label class="check"><input type="checkbox"><span><b>Microbiology</b><small>Required by UF and NSU; useful clinically.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>Anatomy & Physiology</b><small>Excellent preparation for first-year dental coursework.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>Cell / Molecular Biology</b><small>Useful upper-level science evidence.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>Genetics / Immunology / Histology</b><small>Recommended by some schools including NSU.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>Statistics / Calculus</b><small>Requirement depends on the dental school.</small></span></label>
+        <label class="check"><input type="checkbox"><span><b>Psychology / Sociology</b><small>Helpful for patient care, behavior and communication.</small></span></label>
+      </div>
+    </div>
+  </div>
+  <p class="small">Example: UF currently requires English, Biology, General Chemistry, Organic Chemistry and Physics, plus upper-level Microbiology and Biochemistry. Always verify the schools on your own list before registering.</p>
+</div>
+</section>
+
+<section id="dat">
+<div class="wrap">
+  <div class="section-head">
+    <div><div class="eyebrow">Dental Admission Test</div><h2>DAT guide</h2></div>
+    <p>The DAT changed to a 200–600 three-digit score scale beginning March 1, 2025. Older 1–30 scores can still appear in older school data, so use the ADA concordance table when comparing.</p>
+  </div>
+
+  <div class="grid3">
+    <div class="card"><h3>Natural Sciences</h3><p class="meta">Biology · General Chemistry · Organic Chemistry</p><p>Build content first, then shift heavily toward timed questions and error review.</p></div>
+    <div class="card"><h3>Perceptual Ability</h3><p class="meta">PAT</p><p>Spatial reasoning improves with repeated practice. Small daily sessions are often more sustainable than cramming.</p></div>
+    <div class="card"><h3>Reading + Quantitative</h3><p class="meta">RC · QR</p><p>Practice under time pressure. Do not let science prep push these sections to the last week.</p></div>
+  </div>
+
+  <h3 style="margin-top:30px">Prep resources: pros & cons</h3>
+  <div class="grid3">
+    <div class="card prep-card">
+      <h3>DAT Bootcamp</h3>
+      <p class="meta">Structured, popular all-in-one prep</p>
+      <div class="proscons">
+        <div class="pros"><b>Pros</b><br>Clear structure, strong video lessons, organized schedule, large practice ecosystem.</div>
+        <div class="cons"><b>Cons</b><br>Can be expensive; the volume of material can feel heavy if you are short on time.</div>
+      </div>
+    </div>
+    <div class="card prep-card">
+      <h3>DATBooster</h3>
+      <p class="meta">Question-heavy, current 2026 content</p>
+      <div class="proscons">
+        <div class="pros"><b>Pros</b><br>Large question bank, PAT generators, custom schedule builder, many practice tests and analytics.</div>
+        <div class="cons"><b>Cons</b><br>Dense platform; students who prefer live instruction may want more guided teaching.</div>
+      </div>
+    </div>
+    <div class="card prep-card">
+      <h3>Kaplan / live-course style</h3>
+      <p class="meta">More instructor-guided</p>
+      <div class="proscons">
+        <div class="pros"><b>Pros</b><br>Useful if you want a class structure, live accountability or instructor access.</div>
+        <div class="cons"><b>Cons</b><br>Usually more expensive and less flexible than self-paced plans.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h3>What happens after you take the DAT?</h3>
+    <div class="grid3">
+      <div><b>1. Scores</b><p class="small">Your official scores are reported electronically. Schools decide what they consider competitive; the DAT itself does not have one universal “passing” score.</p></div>
+      <div><b>2. Decide whether to retake</b><p class="small">Compare your score with the published data for your target schools, not random social-media cutoffs. A retake should come with a changed study strategy.</p></div>
+      <div><b>3. Apply strategically</b><p class="small">Use DAT + GPA + experiences + mission fit + cost + residency preference to build your school list.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="schools">
+<div class="wrap">
+  <div class="section-head">
+    <div><div class="eyebrow">School explorer</div><h2>Finding the right dental schools</h2></div>
+    <p>“Best” is not one ranking. Cost, clinical volume, specialty exposure, class size, location, research, residency preference and your own metrics all matter.</p>
+  </div>
+
+  <div class="callout warning" style="margin-bottom:18px"><b>About “easy” schools:</b> no accredited U.S. dental school is easy to enter. Instead, compare published GPA/DAT ranges, class size, residency preferences and mission. A school with a lower stated threshold may still receive thousands of applications.</div>
+
+  <div class="school-controls">
+    <select id="regionFilter">
+      <option value="all">All examples</option>
+      <option value="fl">Florida</option>
+      <option value="national">National examples</option>
+    </select>
+    <select id="typeFilter">
+      <option value="all">All fit types</option>
+      <option value="high">Higher-metric / very selective</option>
+      <option value="broad">Broader published thresholds / large programs</option>
+    </select>
+  </div>
+  <div class="grid3" id="schoolGrid"></div>
+  <p class="small">This explorer is a starting point, not an admissions prediction. Published minimums are not the same thing as enrolled-class averages.</p>
+</div>
+</section>
+
+<section id="nova">
+<div class="wrap">
+  <div class="card nova">
+    <div class="section-head">
+      <div><div class="eyebrow" style="color:#8fe5dc">Special pathway</div><h2>NSU Master of Dental Science Certificate</h2></div>
+      <p>For applicants who have already applied through AADSAS and want an academic bridge into dental school.</p>
+    </div>
+    <div class="grid3">
+      <div class="stat"><b>1 year</b><span>22-credit certificate curriculum</span></div>
+      <div class="stat"><b>3.7 GPA</b><span>Successful completion at this benchmark reserves a seat in the next NSU D.M.D. class</span></div>
+      <div class="stat"><b>3.0+</b><span>Recommended GPA to apply to the certificate</span></div>
+    </div>
+    <div class="grid2" style="margin-top:22px">
+      <div>
+        <h3>How it works</h3>
+        <ul>
+          <li>You take upper-level biomedical courses alongside the dental-school environment, including anatomy, histology, microbiology, biochemistry, immunology, physiology and neuroanatomy.</li>
+          <li>Complete all certificate courses with at least a C.</li>
+          <li>NSU states that successful completion with an overall <b>3.7 GPA</b> provides a reserved seat in the next D.M.D. class.</li>
+          <li>Students who do not reach the reserved-seat benchmark may be evaluated for guaranteed-interview criteria.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Admissions snapshot</h3>
+        <div class="metric"><span>Recommended GPA</span><b>3.0+</b></div>
+        <div class="metric"><span>Older-scale DAT recommendation shown by NSU</span><b>18 AA / TS</b></div>
+        <div class="metric"><span>AADSAS application</span><b>Required</b></div>
+        <div class="metric"><span>Letters</span><b>3</b></div>
+        <div class="metric"><span>Interview</span><b>Group Zoom if offered</b></div>
+      </div>
+    </div>
+    <p class="small" style="color:#cfe8ef;margin-top:16px">Important: NSU's public page still displays an older 1–30 DAT recommendation for this certificate while the ADA now reports 200–600 scores. Verify the current interpretation directly with NSU before applying.</p>
+  </div>
+
+  <div class="card" style="margin-top:18px">
+    <h3>NSU also has an M.B.S. Health Professions Pathway</h3>
+    <p>This is different. NSU's Master of Biomedical Sciences Health Professions Pathway offers a <b>guaranteed interview option</b> for eligible students applying to select NSU professional programs, including D.M.D.; it is not the same as the M.D.S. certificate's reserved-seat benchmark.</p>
+  </div>
+</div>
+</section>
+
+<section id="stats">
+<div class="wrap">
+  <div class="section-head">
+    <div><div class="eyebrow">Interactive</div><h2>My Stats</h2></div>
+    <p>Use this to identify areas to strengthen. It is not an acceptance calculator and does not estimate your probability of admission.</p>
+  </div>
+  <div class="card">
+    <div class="form-grid">
+      <div class="field"><label>Overall GPA</label><input id="gpa" type="number" min="0" max="4" step=".01" placeholder="3.55"></div>
+      <div class="field"><label>Science GPA</label><input id="sgpa" type="number" min="0" max="4" step=".01" placeholder="3.40"></div>
+      <div class="field"><label>DAT AA (200–600)</label><input id="datScore" type="number" min="200" max="600" step="10" placeholder="430"></div>
+      <div class="field"><label>Shadowing hours</label><input id="shadow" type="number" min="0" placeholder="120"></div>
+      <div class="field"><label>Volunteer/service hours</label><input id="volunteer" type="number" min="0" placeholder="150"></div>
+      <div class="field"><label>Dental work hours</label><input id="dentalWork" type="number" min="0" placeholder="0"></div>
+      <div class="field"><label>Research hours</label><input id="research" type="number" min="0" placeholder="0"></div>
+      <div class="field"><label>Leadership roles</label><input id="leadership" type="number" min="0" placeholder="1"></div>
+      <div class="field"><label>Manual-dexterity activities</label><input id="manual" type="number" min="0" placeholder="2"></div>
+    </div>
+    <button class="btn primary" style="margin-top:16px" onclick="analyzeStats()">Review my profile</button>
+    <div id="scorebox" class="scorebox">
+      <div class="meter"><div id="meterFill"></div></div>
+      <h3 id="profileTitle"></h3>
+      <div id="profileText"></div>
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-top:18px">
+    <div class="card"><h3>If your GPA is lower</h3><p>Focus on an upward academic trend, repeat foundational weaknesses only when appropriate, and consider upper-level science work, a post-bacc, or a carefully chosen master’s/SMP. Strong experiences help your application, but they do not literally erase academic concerns.</p></div>
+    <div class="card"><h3>If your DAT is lower</h3><p>Decide whether a retake is worth it based on target-school data and how much your preparation can realistically change. A better second attempt comes from a different plan, not just more hours.</p></div>
+    <div class="card"><h3>If experiences are thin</h3><p>Choose depth over collecting boxes: consistent general-dentist shadowing, service with real responsibility, dental work when available, leadership, research if you enjoy it, and hand-skill hobbies you can genuinely discuss.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="apply">
+<div class="wrap">
+  <div class="section-head">
+    <div><div class="eyebrow">Application cycle</div><h2>Month-by-month plan</h2></div>
+    <p>These months are a planning template. For the 2026–27 cycle, ADEA AADSAS opened May 12, 2026 and first allowed submission June 2, 2026.</p>
+  </div>
+  <div class="monthgrid">
+    <div class="month"><b>January</b><p>Finalize DAT plan, school research, experience gaps and letter-writer list.</p></div>
+    <div class="month"><b>February</b><p>Draft personal statement stories and organize your activity log.</p></div>
+    <div class="month"><b>March</b><p>Ask for letters early. Continue DAT prep and school-list research.</p></div>
+    <div class="month"><b>April</b><p>Prepare transcripts, descriptions, resume/CV and fee-assistance materials if eligible.</p></div>
+    <div class="month"><b>May</b><p>AADSAS opens for entry. Enter coursework carefully; polish written materials.</p></div>
+    <div class="month"><b>June</b><p>Submit once the application is accurate and strong. Complete school-specific requirements.</p></div>
+    <div class="month"><b>July</b><p>Secondaries/supplementals, CASPer or other school-specific items if required, interview prep.</p></div>
+    <div class="month"><b>August</b><p>Interview season begins for some schools. Keep courses and experiences strong.</p></div>
+    <div class="month"><b>September</b><p>Interview practice, school-specific research, professional updates where permitted.</p></div>
+    <div class="month"><b>October</b><p>Watch individual school deadlines. UF's current cycle deadline is October 1.</p></div>
+    <div class="month"><b>November</b><p>Continue interviews; NSU's D.M.D. AADSAS deadline is currently November 15.</p></div>
+    <div class="month"><b>December</b><p>First major acceptance notification date for the 2026–27 cycle is December 15.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="interviews">
+<div class="wrap">
+  <div class="section-head">
+    <div><div class="eyebrow">Interview season</div><h2>What to expect</h2></div>
+    <p>The goal is not to memorize perfect answers. Schools want to understand your motivation, judgment, communication, maturity and fit.</p>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Common formats</h3>
+      <details open><summary>Traditional one-on-one / panel</summary><p>Questions about your story, why dentistry, academics, experiences, strengths, challenges, ethical judgment and why that school.</p></details>
+      <details><summary>MMI</summary><p>Short stations may test communication, ethical reasoning, teamwork or situational judgment. Explain your reasoning clearly rather than trying to guess a secret answer.</p></details>
+      <details><summary>Open-file vs. closed-file</summary><p>An interviewer may have your application in front of them, or know little beyond basic information. Prepare to explain your experiences either way.</p></details>
+    </div>
+    <div class="card">
+      <h3>Questions you should be ready for</h3>
+      <ul>
+        <li>Why dentistry — specifically, not just health care?</li>
+        <li>Tell me about a shadowing moment that changed how you see the profession.</li>
+        <li>What did you learn from a poor grade or setback?</li>
+        <li>How do you handle stress, feedback and conflict?</li>
+        <li>Why this school?</li>
+        <li>What community do you hope to serve?</li>
+        <li>What activity demonstrates hand skills or patience?</li>
+        <li>What would you do in an ethical dilemma?</li>
+      </ul>
+      <div class="callout"><b>Interview rule:</b> know your own application cold. Anything you wrote can become a question.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="faq">
+<div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">Reality check</div><h2>Questions pre-dental students worry about</h2></div></div>
+  <details><summary>Can I still get into dental school with a lower GPA?</summary><p>Possibly, depending on the full record and target schools. An upward trend, strong recent science coursework, a post-bacc or master's program, and a strong DAT can help demonstrate academic readiness. Shadowing, service, leadership and manual-dexterity experiences add important context, but they do not directly cancel out weak academics.</p></details>
+  <details><summary>How many shadowing hours do I need?</summary><p>There is no universal national number. Check each school. LECOM, for example, strongly recommends at least 100 hours in a clinical dental setting, primarily with a general dentist.</p></details>
+  <details><summary>Do I need research?</summary><p>No universal requirement. Research can be valuable, especially for research-oriented schools, but sustained service, leadership, work and dental experiences can also be meaningful.</p></details>
+  <details><summary>Does my major matter?</summary><p>Usually not. Choose a major you can succeed in while completing prerequisites. UF explicitly states it does not require or favor a specific major.</p></details>
+  <details><summary>What counts as manual dexterity?</summary><p>Activities using fine motor control: drawing, sculpting, sewing, jewelry making, model building, instruments, ceramics, woodworking, nail art, electronics repair and similar hobbies. Quality and authenticity matter more than inventing a hobby just for an application.</p></details>
+</div>
+</section>
+
+<section id="sources">
+<div class="wrap">
+  <div class="section-head"><div><div class="eyebrow">Verify before you apply</div><h2>Primary sources used</h2></div><p>Admissions requirements change. Check the official page for every school in the cycle you apply.</p></div>
+  <div class="card sources">
+    <ul>
+      <li><a href="https://www.adea.org/home/application-services/become-a-dentist/adea-aadsas-applicants" target="_blank">ADEA AADSAS applicant information and cycle dates</a></li>
+      <li><a href="https://www.ada.org/education/testing/exams/dental-admission-test-dat" target="_blank">American Dental Association — DAT</a></li>
+      <li><a href="https://admissions.dental.ufl.edu/d-m-d/dmd-requirements/" target="_blank">University of Florida College of Dentistry — D.M.D. requirements</a></li>
+      <li><a href="https://admissions.dental.ufl.edu/d-m-d/why-ufcd/entering-class-stats/" target="_blank">University of Florida — entering class statistics</a></li>
+      <li><a href="https://dental.nova.edu/admissions/dmd.html" target="_blank">Nova Southeastern University — D.M.D. admissions</a></li>
+      <li><a href="https://dental.nova.edu/degrees/certificate/index.html" target="_blank">Nova Southeastern University — Master of Dental Science Certificate</a></li>
+      <li><a href="https://md.nova.edu/degrees/masters/biomedical-sciences/index.html" target="_blank">Nova Southeastern University — Master of Biomedical Sciences pathways</a></li>
+      <li><a href="https://lecom.edu/dental/sdm-entrance-requirements/" target="_blank">LECOM School of Dental Medicine — entrance requirements</a></li>
+      <li><a href="https://boosterprep.com/dat" target="_blank">DATBooster — current 2026 platform features</a></li>
+    </ul>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="tagline">Plan smart. Build steadily. Apply when you are ready.</div>
+    <p>Pre-Dental Compass is an educational planning tool, not an admissions guarantee. Requirements, deadlines, DAT interpretations and program linkage rules can change.</p>
+  </div>
+</footer>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+tabs.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tabpane').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+const schools = [
+  {
+    name:"University of Florida", region:"fl", type:"high",
+    location:"Gainesville, FL · Public D.M.D.",
+    note:"Highly competitive Florida option with strong in-state enrollment.",
+    stats:["2026 enrolled GPA: 3.91 overall / 3.87 science","2026 DAT AA: 470 (≈23 old scale)","93 enrolled; 85 Florida residents","No stated minimum GPA, but recent class metrics are high"],
+    fit:"Research the school if you have strong academics, Florida ties/residency, and want a public-school option."
+  },
+  {
+    name:"Nova Southeastern University", region:"fl", type:"broad",
+    location:"Fort Lauderdale/Davie, FL · Private D.M.D.",
+    note:"Florida private school with multiple NSU-linked pre-dental pathways.",
+    stats:["Suggested cumulative GPA: 3.25+","Suggested science GPA: 3.25+","90 semester hours minimum; bachelor's preferred","Requires Biochemistry + Microbiology"],
+    fit:"Worth researching for students seeking a South Florida program and those interested in NSU linkage options."
+  },
+  {
+    name:"LECOM School of Dental Medicine", region:"fl", type:"broad",
+    location:"Bradenton, FL · Private D.M.D.",
+    note:"Problem-Based Learning curriculum with extensive community-based clinical training.",
+    stats:["Successful applicants typically 3.2+ science / overall GPA","Competitive DAT AA typically 410+ (≈19 old scale)","100+ dental shadowing hours strongly recommended","Bachelor's normally required by enrollment"],
+    fit:"Worth researching if you like PBL, community-based care and a clearly published academic floor."
+  },
+  {
+    name:"NYU College of Dentistry", region:"national", type:"broad",
+    location:"New York, NY · Private D.D.S.",
+    note:"Very large urban dental program. Large class size does not mean automatic or easy admission.",
+    stats:["Large national applicant pool","Urban clinical environment","Private-school cost is a major fit factor","Always check the current class profile before applying"],
+    fit:"Compare cost, class size, city preference, clinical opportunities and current academic profile."
+  },
+  {
+    name:"Harvard School of Dental Medicine", region:"national", type:"high",
+    location:"Boston, MA · Private D.M.D.",
+    note:"Small, research-intensive program with very selective admissions.",
+    stats:["Small class environment","Strong biomedical/research focus","Very selective applicant pool","Fit matters beyond metrics"],
+    fit:"Best researched by students especially interested in research, medicine-dentistry integration and a small program."
+  },
+  {
+    name:"University of Pennsylvania", region:"national", type:"high",
+    location:"Philadelphia, PA · Private D.M.D.",
+    note:"Academic and research-intensive program with broad specialty exposure.",
+    stats:["Strong academic expectations","Large academic medical environment","Research and specialty exposure","Private-school cost considerations"],
+    fit:"Research if you value an academically intensive environment and specialty/research opportunities."
+  },
+  {
+    name:"Temple University Kornberg", region:"national", type:"broad",
+    location:"Philadelphia, PA · D.M.D.",
+    note:"Known for a large clinical setting and diverse patient exposure.",
+    stats:["Clinical-volume focus","Urban patient population","Compare current GPA/DAT profile directly","Review residency and cost"],
+    fit:"Research if hands-on clinical exposure and an urban patient base are important to you."
+  },
+  {
+    name:"Tufts University School of Dental Medicine", region:"national", type:"broad",
+    location:"Boston, MA · Private D.M.D.",
+    note:"Large private dental school in a major academic health city.",
+    stats:["Large class environment","Broad clinical exposure","Private-school cost consideration","Check current class profile and prerequisites"],
+    fit:"Research if you prefer a larger program and Boston clinical/academic environment."
+  }
+];
+
+function renderSchools(){
+  const region=document.getElementById('regionFilter').value;
+  const type=document.getElementById('typeFilter').value;
+  const grid=document.getElementById('schoolGrid');
+  grid.innerHTML='';
+  schools.filter(s=>(region==='all'||s.region===region)&&(type==='all'||s.type===type)).forEach(s=>{
+    const div=document.createElement('div');
+    div.className='card school-card';
+    div.innerHTML=`<h3>${s.name}</h3><div class="meta">${s.location}</div>
+      <p>${s.note}</p><p><span class="pill ${s.type==='high'?'gold':'blue'}">${s.type==='high'?'Higher-metric / very selective':'Broader published threshold / larger-program example'}</span></p>
+      <ul>${s.stats.map(x=>`<li>${x}</li>`).join('')}</ul><p class="small"><b>Fit note:</b> ${s.fit}</p>`;
+    grid.appendChild(div);
+  });
+}
+document.getElementById('regionFilter').addEventListener('change',renderSchools);
+document.getElementById('typeFilter').addEventListener('change',renderSchools);
+renderSchools();
+
+function num(id){ const v=parseFloat(document.getElementById(id).value); return isNaN(v)?null:v; }
+
+function analyzeStats(){
+  const gpa=num('gpa'), sgpa=num('sgpa'), dat=num('datScore'), sh=num('shadow'), vol=num('volunteer'),
+        work=num('dentalWork'), res=num('research'), lead=num('leadership'), manual=num('manual');
+
+  let points=0, possible=0, strengths=[], priorities=[], notes=[];
+
+  if(gpa!==null){ possible+=20; if(gpa>=3.6){points+=20;strengths.push("overall GPA");}
+    else if(gpa>=3.3){points+=15;notes.push("Your overall GPA can fit many school profiles, but school selection matters.");}
+    else {points+=8;priorities.push("build stronger recent academic evidence");}}
+  if(sgpa!==null){ possible+=20; if(sgpa>=3.6){points+=20;strengths.push("science GPA");}
+    else if(sgpa>=3.2){points+=14;notes.push("Your science GPA is within the stated/typical range of some programs, but compare school-by-school.");}
+    else {points+=7;priorities.push("strengthen science GPA / upward trend");}}
+  if(dat!==null){ possible+=20; if(dat>=450){points+=20;strengths.push("DAT");}
+    else if(dat>=410){points+=14;notes.push("Your DAT is around or above the published competitive threshold used by some schools such as LECOM.");}
+    else {points+=7;priorities.push("review target-school DAT data and consider whether a retake is justified");}}
+  if(sh!==null){ possible+=10; if(sh>=100){points+=10;strengths.push("shadowing exposure");}
+    else if(sh>=50){points+=7;notes.push("Keep building consistent general-dentist shadowing.");}
+    else {points+=3;priorities.push("increase dental shadowing");}}
+  if(vol!==null){ possible+=10; if(vol>=100){points+=10;strengths.push("service");}
+    else if(vol>=50){points+=7;} else {points+=3;priorities.push("build sustained community service");}}
+  if(work!==null){ possible+=5; if(work>=100){points+=5;strengths.push("dental work exposure");} else if(work>0){points+=3;}}
+  if(res!==null){ possible+=5; if(res>=100){points+=5;strengths.push("research");} else if(res>0){points+=3;}}
+  if(lead!==null){ possible+=5; if(lead>=1){points+=5;strengths.push("leadership");}}
+  if(manual!==null){ possible+=5; if(manual>=1){points+=5;strengths.push("manual-dexterity interests");}}
+
+  const pct=possible?Math.round(points/possible*100):0;
+  document.getElementById('meterFill').style.width=pct+'%';
+  const box=document.getElementById('scorebox'); box.classList.add('show');
+
+  let title="Add a few stats to get a useful review.";
+  if(possible>0){
+    if(pct>=80) title="You have several strong building blocks.";
+    else if(pct>=62) title="You have a workable foundation with clear areas to strengthen.";
+    else title="Your next move is to strengthen the weakest part of the profile — not to give up.";
+  }
+  document.getElementById('profileTitle').textContent=title;
+
+  let html="";
+  if(strengths.length) html+=`<p><b>Current strengths:</b> ${strengths.join(", ")}.</p>`;
+  if(priorities.length) html+=`<p><b>Priority areas:</b> ${priorities.join("; ")}.</p>`;
+  if(notes.length) html+=`<p><b>Context:</b> ${notes.join(" ")}</p>`;
+  html+=`<div class="callout"><b>Remember:</b> this score bar is only an organization tool. Admissions committees use holistic review, and every school weighs academics and experiences differently. A lower GPA is not “made up for” mathematically by shadowing or service; the goal is to show academic readiness <i>and</i> meaningful preparation for dentistry.</div>`;
+  document.getElementById('profileText').innerHTML=html;
+}
+</script>
+</body>
+</html>
